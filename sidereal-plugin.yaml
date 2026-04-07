@@ -1,0 +1,87 @@
+name: psn-blade-mcp
+version: "0.1.0"
+description: "PlayStation Network operations — trophies, game library, friends, presence, and messaging via unofficial PSN API"
+author: groupthink-dev
+licence: MIT
+tier: community
+homepage: https://github.com/groupthink-dev/psn-blade-mcp
+contract: gaming-v1
+
+services:
+  gaming:
+    profile: psn_profile
+    achievements: psn_trophies
+    achievement_summary: psn_trophy_summary
+    games_played: psn_games
+    games_recent: psn_games_recent
+    friends: psn_friends
+    presence: psn_presence
+    search_users: psn_search_users
+    achievement_compare: psn_trophy_compare
+    achievement_groups: psn_trophy_groups
+    games_purchased: psn_entitlements
+    devices: psn_devices
+    game_details: psn_game_details
+    search_games: psn_search_games
+    send_message: psn_send_message
+    friend_add: psn_friend_accept
+    friend_remove: psn_friend_remove
+
+setup:
+  icon: "gamecontroller.fill"
+  blurb: "Connect to PlayStation Network for trophy tracking, game library, friends, and messaging. Uses unofficial PSN API."
+  auth_model: api_key
+  complexity: moderate
+  fields:
+    - key: PSN_NPSSO
+      label: "NPSSO Token"
+      secret: true
+      required: true
+      placeholder: "npsso=xxxxxxxx..."
+      help: "Session cookie from ca.account.sony.com — see prerequisites for extraction steps"
+    - key: PSN_WRITE_ENABLED
+      label: "Enable write operations"
+      type: boolean
+      secret: false
+      required: false
+      help: "Send messages, accept/remove friends. Disabled by default."
+  test:
+    endpoint: "https://ca.account.sony.com/api/authz/v3/oauth/authorize?access_type=offline&client_id=09515159-7237-4370-9b40-3806e67c0891&response_type=code&scope=psn:mobile.v2.core%20psn:clientapp&redirect_uri=com.scee.psxandroid.scecompcall://redirect"
+    auth_style: none
+    expected_status: [302, 200]
+  prerequisites:
+    - "A PlayStation Network account (dedicated API account recommended — excessive use may trigger bans)"
+    - "Log in at store.playstation.com in a browser"
+    - "Visit https://ca.account.sony.com/api/v1/ssocookie to obtain your NPSSO token"
+    - "Copy the npsso value from the JSON response"
+    - "Token expires with your browser session — regenerate when auth fails"
+  help:
+    - label: "PSN API documentation (community)"
+      url: "https://andshrew.github.io/PlayStation-Trophies/"
+    - label: "PSNAWP library docs"
+      url: "https://psnawp.readthedocs.io/"
+    - label: "NPSSO token guide"
+      url: "https://github.com/isFakeAccount/psnawp?tab=readme-ov-file#authentication"
+
+install:
+  runtime: uv
+  package: psn-blade-mcp
+  command: psn-blade-mcp
+
+env:
+  - name: PSN_NPSSO
+    description: "NPSSO session token from PlayStation Network"
+    secret: true
+  - name: PSN_WRITE_ENABLED
+    description: "Enable write operations (messaging, friend management)"
+    default: "false"
+
+requires:
+  sidereal: ">=0.3.0"
+
+conformance:
+  required: "untested"
+  recommended: "untested"
+  optional: "untested"
+  gated: "untested"
+  last_tested: null
