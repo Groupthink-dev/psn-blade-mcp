@@ -4,6 +4,8 @@ description: "PlayStation Network operations — trophies, game library, friends
 author: groupthink-dev
 licence: MIT
 tier: certified
+author_type: first-party
+readiness: experimental
 homepage: https://github.com/groupthink-dev/psn-blade-mcp
 contract: gaming-v1
 
