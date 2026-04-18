@@ -79,11 +79,11 @@ env:
     default: "false"
 
 requires:
-  sidereal: ">=0.3.0"
+  stallari: ">=0.60"
 
 conformance:
-  required: "untested"
-  recommended: "untested"
-  optional: "untested"
-  gated: "untested"
-  last_tested: null
+  required: "4/4"
+  recommended: "4/4"
+  optional: "6/6"
+  gated: "3/3"
+  last_tested: "2026-04-18"
