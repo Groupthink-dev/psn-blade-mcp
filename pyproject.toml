@@ -1,6 +1,6 @@
 [project]
 name = "psn-blade-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "PlayStation Network MCP Server — trophies, game library, friends, presence, and messaging"
 readme = "README.md"
 license = {text = "MIT"}

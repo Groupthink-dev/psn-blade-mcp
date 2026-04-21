@@ -1,5 +1,5 @@
 name: psn-blade-mcp
-version: "0.1.0"
+version: "0.1.1"
 description: "PlayStation Network operations — trophies, game library, friends, presence, and messaging via unofficial PSN API"
 author: groupthink-dev
 licence: MIT
