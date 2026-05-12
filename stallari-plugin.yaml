@@ -81,6 +81,8 @@ env:
 requires:
   stallari: ">=0.60"
 
+  adapter_contracts:
+    - "gaming >= 1.0"
 conformance:
   required: "4/4"
   recommended: "4/4"
